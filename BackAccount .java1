@@ -1,0 +1,59 @@
+// BankAccount.java
+class BankAccount {
+
+    
+    private String accountHolderName;
+    private int accountNumber;
+    private double balance;
+
+    public BankAccount(String name, int accNo, double initialBalance) {
+        accountHolderName = name;
+        accountNumber = accNo;
+        balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: ₹" + amount);
+        } else {
+            System.out.println("Invalid deposit amount");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: ₹" + amount);
+        } else {
+            System.out.println("Insufficient balance or invalid amount");
+        }
+    }
+
+    
+    public void checkBalance() {
+        System.out.println("Current Balance: ₹" + balance);
+    }
+
+    
+    public void displayDetails() {
+        System.out.println("Account Holder: " + accountHolderName);
+        System.out.println("Account Number: " + accountNumber);
+    }
+}
+public class BankMain {
+    public static void main(String[] args) {
+
+        BankAccount account = new BankAccount("Keerthana", 
+                123456, 
+                5000
+        );
+        account.displayDetails();
+        account.checkBalance();
+
+        account.deposit(2000);
+        account.withdraw(1500);
+
+        account.checkBalance();
+    }
+}
